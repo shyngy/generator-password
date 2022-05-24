@@ -1,0 +1,50 @@
+.checkboxSection{
+  margin-top: 34px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+}
+.checkboxes{
+  display: flex;
+}
+label{
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 35px;
+
+}
+
+.checkbox{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+
+
+}
+
+.checkboxStyle{
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid white;
+  border-radius: 14px;
+  margin-left: -35px;
+  margin-right: 8px;
+}
+
+.checkbox:checked + .checkboxStyle::before{
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: #FFFFFF;
+  
+  border-radius: 28px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
