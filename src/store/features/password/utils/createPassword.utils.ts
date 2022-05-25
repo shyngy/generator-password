@@ -1,6 +1,6 @@
 import { getCheckboxStatus } from './checkbox.utils';
 export const initialPasswordValues = {
-  length: 8,
+  length: 12,
   useUpperCase: getCheckboxStatus('upperCase'),
   useLowerCase: getCheckboxStatus('lowerCase'),
   useSpecialSymbols: getCheckboxStatus('specialSymbol'),

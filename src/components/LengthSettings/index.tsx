@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import DoubleButton from '../DoubleButton';
 import LengthSlider from '../LengthSlider';
 import styles from './LengthSettings.module.scss';
-import leftImage from '../../../assets/images/plus.svg';
-import rightImage from '../../../assets/images/minus.svg';
+import plusImage from '../../../assets/images/plus.svg';
+import minusImage from '../../../assets/images/minus.svg';
 
 const LengthSettings = () => {
   const dispatch = useAppDispatch();
@@ -28,8 +28,8 @@ const LengthSettings = () => {
       Длинна пароля:<strong className={styles.length}>{passwordLength}</strong>
       <LengthSlider length={passwordLength} onChangeLength={onChangeLength} />
       <DoubleButton
-        leftImage={leftImage}
-        rightImage={rightImage}
+        leftImage={minusImage}
+        rightImage={plusImage}
         rightDisabled={rightDisabled}
         leftDisabled={leftDisabled}
         onClickLeftButton={onDecrement}

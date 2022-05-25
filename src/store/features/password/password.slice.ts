@@ -8,12 +8,15 @@ import {
   checkboxesInitialValue,
   getCheckboxStatus,
 } from './utils/checkbox.utils';
-import { ChangeCheckboxStatus, PasswordState } from './types';
+import { ChangeCheckbox, PasswordState } from './types';
+import { securityLevels, SecurityLevel } from './utils/securityLevel';
+import { makePasswordReducer } from './reducers/makePassword';
 
 const initialState: PasswordState = {
   passwordValue: createPassword(),
   passwordLength: initialPasswordValues.length,
   checkboxes: checkboxesInitialValue,
+  securityLevel: securityLevels.good,
 };
 
 export const passwordSlice = createSlice({
@@ -21,17 +24,7 @@ export const passwordSlice = createSlice({
   initialState,
   reducers: {
     makePassword(state) {
-      const boxes = state.checkboxes;
-
-      const password = createPassword({
-        length: state.passwordLength,
-        useLowerCase: getCheckboxStatus('lowerCase', boxes),
-        useNumbers: getCheckboxStatus('number', boxes),
-        useSpecialSymbols: getCheckboxStatus('specialSymbol', boxes),
-        useUpperCase: getCheckboxStatus('upperCase', boxes),
-      });
-
-      state.passwordValue = password;
+      makePasswordReducer(state);
     },
     changeLength(state, action: PayloadAction<number>) {
       state.passwordLength = action.payload;
@@ -46,7 +39,7 @@ export const passwordSlice = createSlice({
         state.passwordLength--;
       }
     },
-    changeCheckboxStatus(state, action: PayloadAction<ChangeCheckboxStatus>) {
+    changeCheckbox(state, action: PayloadAction<ChangeCheckbox>) {
       const checkboxName = action.payload.name;
 
       const checkbox = {
@@ -66,14 +59,13 @@ export const {
   incrementPasswordLength,
   decrementPasswordLength,
   changeLength,
-  changeCheckboxStatus,
+  changeCheckbox,
   makePassword,
 } = passwordSlice.actions;
 
 export const changeCheckboxValue =
-  (name: ChangeCheckboxStatus['name'], value: boolean) =>
-  (dispatch: Dispatch) => {
-    dispatch(changeCheckboxStatus({ name, value }));
+  (name: ChangeCheckbox['name'], value: boolean) => (dispatch: Dispatch) => {
+    dispatch(changeCheckbox({ name, value }));
     dispatch(makePassword());
   };
 
@@ -93,6 +85,9 @@ export const modifyPasswordLength =
 
 export const selectPassword = (state: RootState) =>
   state.password.passwordValue;
+
+export const selectSecurityLevel = (state: RootState) =>
+  state.password.securityLevel;
 
 export const selectCheckboxes = (state: RootState) => state.password.checkboxes;
 

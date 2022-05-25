@@ -1,11 +1,13 @@
 import { Checkboxes, CheckboxNames } from './utils/checkbox.utils';
+import { securityLevels, SecurityLevel } from './utils/securityLevel';
 
-export interface PasswordState {
+export type PasswordState = {
   passwordValue: string;
   passwordLength: number;
   checkboxes: Checkboxes;
-}
-export interface ChangeCheckboxStatus {
+  securityLevel: SecurityLevel;
+};
+export interface ChangeCheckbox {
   name: CheckboxNames;
   value: boolean;
 }

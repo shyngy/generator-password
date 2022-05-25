@@ -5,12 +5,6 @@ import Header from './components/Header';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { selectPassword } from './store/features/password/password.slice';
 const App: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const password = useAppSelector(selectPassword);
-  React.useEffect(() => {
-    console.log(password);
-  }, []);
-
   return (
     <div className="App">
       <Header />

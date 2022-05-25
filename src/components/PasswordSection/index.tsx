@@ -3,6 +3,7 @@ import {
   changeCheckboxValue,
   selectCheckboxes,
   selectPassword,
+  selectSecurityLevel,
 } from '../../store/features/password/password.slice';
 import { CheckboxNames } from '../../store/features/password/utils/checkbox.utils';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -14,6 +15,7 @@ import styles from './PasswordSection.module.scss';
 const PasswordSection = () => {
   const dispatch = useAppDispatch();
   const password = useAppSelector(selectPassword);
+  const securityLevel = useAppSelector(selectSecurityLevel);
   const checkboxes = useAppSelector(selectCheckboxes);
   const checkboxNames = Object.keys(checkboxes) as CheckboxNames[];
 
@@ -26,7 +28,7 @@ const PasswordSection = () => {
   return (
     <div className={styles.mainPassword}>
       <div className={styles.passwordSection}>
-        <Password password={password} />
+        <Password securityLevel={securityLevel} password={password} />
         <LengthSettings />
         <CheckboxesSection
           checkboxes={checkboxes}
