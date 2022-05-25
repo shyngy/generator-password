@@ -1,11 +1,12 @@
 import React from 'react';
+import copy from 'copy-to-clipboard';
 import DoubleButton from '../DoubleButton';
 import styles from './Password.module.scss';
-import copy from '../../../assets/images/copy.svg';
-import restart from '../../../assets/images/restart.svg';
+import copyImage from '../../../assets/images/copy.svg';
+import restartImage from '../../../assets/images/restart.svg';
 import { useAppDispatch } from '../../store/hooks';
-import { makePassword } from '../../store/features/password/password.slice';
 import { SecurityLevel } from '../../store/features/password/utils/securityLevel';
+import { makePassword } from '../../store/features/password/actions';
 interface PasswordProps {
   password: string;
   securityLevel: SecurityLevel;
@@ -15,7 +16,7 @@ const Password: React.FC<PasswordProps> = ({ password, securityLevel }) => {
   const dispatch = useAppDispatch();
 
   const onCopy = () => {
-    navigator.clipboard.writeText(password);
+    copy(password);
   };
 
   const onRestart = () => {
@@ -36,8 +37,8 @@ const Password: React.FC<PasswordProps> = ({ password, securityLevel }) => {
       <DoubleButton
         onClickLeftButton={onRestart}
         onClickRightButton={onCopy}
-        rightImage={copy}
-        leftImage={restart}
+        rightImage={copyImage}
+        leftImage={restartImage}
       />
     </div>
   );

@@ -1,9 +1,7 @@
 import React from 'react';
-
 import PasswordSection from './components/PasswordSection';
 import Header from './components/Header';
-import { useAppDispatch, useAppSelector } from './store/hooks';
-import { selectPassword } from './store/features/password/password.slice';
+
 const App: React.FC = () => {
   return (
     <div className="App">

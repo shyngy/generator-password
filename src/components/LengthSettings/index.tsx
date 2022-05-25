@@ -1,14 +1,12 @@
 import React from 'react';
-import {
-  modifyPasswordLength,
-  selectPasswordLength,
-} from '../../store/features/password/password.slice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import DoubleButton from '../DoubleButton';
 import LengthSlider from '../LengthSlider';
 import styles from './LengthSettings.module.scss';
 import plusImage from '../../../assets/images/plus.svg';
 import minusImage from '../../../assets/images/minus.svg';
+import { modifyPasswordLength } from '../../store/features/password/actions';
+import { selectPasswordLength } from '../../store/features/password/selectors';
 
 const LengthSettings = () => {
   const dispatch = useAppDispatch();

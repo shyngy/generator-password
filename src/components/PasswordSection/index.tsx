@@ -1,10 +1,10 @@
 import React from 'react';
+import { changeCheckboxValue } from '../../store/features/password/actions';
 import {
-  changeCheckboxValue,
   selectCheckboxes,
   selectPassword,
   selectSecurityLevel,
-} from '../../store/features/password/password.slice';
+} from '../../store/features/password/selectors';
 import { CheckboxNames } from '../../store/features/password/utils/checkbox.utils';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import CheckboxesSection from '../CheckboxesSection';

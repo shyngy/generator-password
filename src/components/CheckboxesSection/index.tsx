@@ -18,7 +18,7 @@ const CheckboxesSection: React.FC<CheckboxesSectionProps> = ({
 }) => {
   return (
     <section className={styles.checkboxSection}>
-      Используемые символы:
+      <span className={styles.text}>Используемые символы:</span>
       <div className={styles.checkboxes}>
         {names.map((name, index) => {
           return (
